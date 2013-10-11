@@ -2,10 +2,15 @@
  * Created by xxx on 9/24/13.
  */
 
-var ADRBOOK = ADRBOOK || {};
-
-
-ADRBOOK.persons = {
+var ADRBOOK = ADRBOOK || {
+    groupsDom: d3.select("#groups")
+        .append("select")
+        .attr("size", 5),
+    personsDom: d3.select("#persons")
+        .append("select")
+        .attr("size", 10),
+    contactDom: d3.select("#contact"),
+    searchDom: d3.select("#search"),
     store: [],
     findPersons: function (where, what) {
         var persons = [];
@@ -30,25 +35,24 @@ ADRBOOK.persons = {
 
 ADRBOOK.output = {
     persons:function (personsArray){
-        //alert(personsArray[0]);
-        //d3.select("select").append("option").attr("value",10).text("ddddd");
-        d3.select("#pers").
-            selectAll("option").
-            data(personsArray).
-            enter()
+        ADRBOOK.personsDom.select("select").remove();
+        ADRBOOK.personsDom
+            .selectAll("option")
+            .data(personsArray)
+            .enter()
             .append("option").
             attr("value",function(d) { return d.pid; }).
             on("click",function(d){ADRBOOK.output.contact(d)}).
             text(function(d) { return d.fio; });
-
-
     },
     groups:function (groupsArray){},
     contact:function (contact){
+        ADRBOOK.contactDom.selectAll("p").remove();
+        for (var prop in contact) {
+            ADRBOOK.contactDom.append("p").text(prop + ": " + contact[prop]);
+        }
 
-        d3.select("#contact")
-            .append("select")
-            .attr("size",Object.keys(contact).length).selectAll("option").data(contact).enter().append("option").text(function(d){return d});
+
     }
 
 };
@@ -57,7 +61,7 @@ ADRBOOK.output = {
 /**
  * отладочная часть
  */
-ADRBOOK.persons.store.push({
+ADRBOOK.store.push({
     pid:"1",
     fio: 'Mike Gray',
     email: 'grey@in.ua',
@@ -89,8 +93,8 @@ ADRBOOK.persons.store.push({
     group:'b'
 });
 
+//ADRBOOK.searchDom.append("option").text("div");
+ADRBOOK.output.persons(ADRBOOK.store);
 
-ADRBOOK.output.persons(ADRBOOK.persons.store);
 
-
-//alert(ADRBOOK.persons.findPersons('mobile', '5')[0].fio);
+//alert(ADRBOOK.findPersons('mobile', '5')[0].fio);
