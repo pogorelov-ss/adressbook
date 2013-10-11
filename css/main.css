@@ -1,0 +1,31 @@
+.ui {
+    position: absolute;
+    border: solid 1px  black;
+}
+
+#search {
+    left: 500;
+    top: 50;
+}
+#groups {
+    left: 100;
+    top: 100;
+}
+#contact {
+    left: 500;
+    top: 200;
+}
+#persons {
+    left: 100;
+    top: 200;
+}
+
+.layer1, .layer0 {
+    position: absolute;
+    left: 10;
+    top: 10;
+    height: 768px;
+    width: 1024px;
+    border: solid 1px  black;
+
+}
