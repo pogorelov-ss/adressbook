@@ -1,9 +1,11 @@
 .ui {
-    position: absolute;
+    width: 480px;
+    /*position: absolute;*/
+
     border: solid 1px  black;
 }
 
-#search {
+/*#search {
     left: 450px;
     top: 65px;
 }
@@ -28,4 +30,4 @@
     width: 1024px;
     border: solid 1px  black;
 
-}
+}*/
