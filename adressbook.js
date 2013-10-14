@@ -171,7 +171,7 @@ ADRBOOK.output = {
             .attr("id", function (d) {
                 return d
             })
-            .on("keypress", function (d) {
+            .on("change", function (d) {
                 contact[d] = this.value
             });
         ADRBOOK.editDom.select("input[id='pid']").attr("readonly", "");
@@ -200,7 +200,7 @@ ADRBOOK.output = {
             .attr("id", function (d) {
                 return d
             })
-            .on("keypress", function (d) {
+            .on("change", function (d) {
                 contact[d] = this.value
             });
         ADRBOOK.editDom.select("input[id='pid']").attr("readonly", "");
